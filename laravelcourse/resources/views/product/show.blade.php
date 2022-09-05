@@ -9,7 +9,7 @@
             <div class="card">
                 <div class="card-header">{{$data["product"]["name"]}}</div>
                 <div class="card-body">
-                    <b>Product name:</b> {{ $data["product"]["name"] }} <br/>
+                    <b>Product name:</b> {{$data["product"]["name"] }} <br/>
                     <b>Product price:</b>{{$data["product"]["price"]}}<br/>
                     <b>This product is available in the next sizes:</b><br/>
                     <ul>
