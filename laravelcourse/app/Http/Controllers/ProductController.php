@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use App\Product;
 
 class ProductController extends Controller
 {
@@ -10,17 +11,13 @@ class ProductController extends Controller
     {
         $data = []; //to be sent to the view
 
-        $listProducts = array();
-        $listProducts[121] = array("name" => "Tv samsung", "price" => "1000");
+        $product = Product::findOrFail($id);
         $listOfSizes = array("XS", "S", "M", "L", "XL");
-        if (in_array($id,$listProducts)){
-            $data["title"] = $listProducts[$id]["name"];
-            $data["product"] = $listProducts[$id];
-            $data["sizes"] = $listOfSizes;
-            return view('product.show')->with("data", $data);
-        } else {
-            return redirect('index');
-        }
+
+        $data["title"] = $product->getName();
+        $data["product"] = $product;
+        $data["sizes"] = $listOfSizes;
+        return view('product.show')->with("data", $data);
     }
     public function create()
     {
