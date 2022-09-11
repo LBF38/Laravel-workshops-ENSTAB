@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use database\factories\ProductFactory;
+use Database\Factories\ProductFactory;
 
 class ProductsTableSeeder extends Seeder
 {
@@ -14,7 +14,8 @@ class ProductsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Product::class,8)->create(); // A vérifier
-        // ProductFactory::new()->count(8)->create();
+        // \App\Product::factory()->count(8)->create(); 
+        // Une solution sur stackoverflow ? : https://stackoverflow.com/questions/63816395/laravel-call-to-undefined-function-database-seeders-factory
+        ProductFactory::new()->count(8)->create();
     }
 }

@@ -8,6 +8,7 @@ class Product extends Model
 {
     //attributes id, name, price, created_at, updated_at
     protected $fillable = ['name', 'price'];
+    
     public function getId()
     {
         return $this->attributes['id'];
