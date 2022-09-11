@@ -23,6 +23,7 @@ class ProductController extends Controller
     {
         $data = []; //to be sent to the view
         $data["title"] = "Create product";
+        $data["products"] = Product::all();
 
         return view('product.create')->with("data",$data);
     }
@@ -31,11 +32,10 @@ class ProductController extends Controller
     {
         $request->validate([
             "name" => "required",
-            "price" => "required|gte:0"
+            "price" => "required|numeric|gt:0"
         ]);
-        // dd($request->all());
-        //here goes the code to call the model and save it to the database
+        Product::create($request->only(["name","price"]));
 
-        return view('product.save')->with("input",$request);
+        return back()->with('success','Item created successfully!');
     }
 }
