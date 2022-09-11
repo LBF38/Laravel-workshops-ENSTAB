@@ -5,9 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">Product created</div>
                 <div class="card-body">
-                    This is the index page
+                    You successfully created your product !                    
                 </div>
             </div>
         </div>

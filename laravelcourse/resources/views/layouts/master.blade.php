@@ -22,7 +22,10 @@
                         <ul class="navbar-nav mr-auto">
                             <!--FutureLeftSideLinks-->
                             <li>
-                                <a href="/product/show">Products</a>
+                                <a href="/product/show">Products List</a>
+                            </li>
+                            <li>
+                                <a href="/product/create">Create a Product</a>
                             </li>
                         </ul>
                         <!--RightSideOfNavbar-->

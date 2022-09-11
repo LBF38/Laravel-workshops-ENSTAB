@@ -29,14 +29,16 @@ class ProductController extends Controller
 
         return view('product.create')->with("data",$data);
     }
-    
+
     public function save(Request $request)
     {
         $request->validate([
             "name" => "required",
-            "price" => "required"
+            "price" => "required|gte:0"
         ]);
-        dd($request->all());
+        // dd($request->all());
         //here goes the code to call the model and save it to the database
+
+        return view('product.save')->with("input",$request);
     }
 }
