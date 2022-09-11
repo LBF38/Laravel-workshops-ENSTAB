@@ -12,10 +12,13 @@ class ProductController extends Controller
         $listProducts = array();
         $listProducts[121] = array("name" => "Tv samsung", "price" => "1000");
         $listOfSizes = array("XS", "S", "M", "L", "XL");
-
-        $data["title"] = $listProducts[$id]["name"];
-        $data["product"] = $listProducts[$id];
-        $data["sizes"] = $listOfSizes;
-        return view('product.show')->with("data", $data);
+        if (in_array($id,$listProducts)){
+            $data["title"] = $listProducts[$id]["name"];
+            $data["product"] = $listProducts[$id];
+            $data["sizes"] = $listOfSizes;
+            return view('product.show')->with("data", $data);
+        } else {
+            return redirect('index');
+        }
     }
 }
