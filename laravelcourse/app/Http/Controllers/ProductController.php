@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
 class ProductController extends Controller
@@ -20,5 +21,22 @@ class ProductController extends Controller
         } else {
             return redirect('index');
         }
+    }
+    public function create()
+    {
+        $data = []; //to be sent to the view
+        $data["title"] = "Create product";
+
+        return view('product.create')->with("data",$data);
+    }
+    
+    public function save(Request $request)
+    {
+        $request->validate([
+            "name" => "required",
+            "price" => "required"
+        ]);
+        dd($request->all());
+        //here goes the code to call the model and save it to the database
     }
 }
