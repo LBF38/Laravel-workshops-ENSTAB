@@ -8,7 +8,7 @@ class Product extends Model
 {
     //attributes id, name, price, created_at, updated_at
     protected $fillable = ['name', 'price'];
-    
+
     public function getId()
     {
         return $this->attributes['id'];
@@ -32,5 +32,9 @@ class Product extends Model
     public function setPrice($price)
     {
         $this->attributes['price'] = $price;
+    }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 }

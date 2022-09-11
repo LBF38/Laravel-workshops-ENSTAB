@@ -34,6 +34,11 @@
             <ul id="errors">
                 @foreach($data["products"] as $product)
                 <li>{{ $product->getId() }} - {{ $product->getName() }} : {{ $product->getPrice() }}</li>
+                <b>Comments:</b><br />
+                @foreach($product->comments as $comment)
+                - {{ $comment->getDescription() }}<br />
+                @endforeach
+                <br />
                 @endforeach
             </ul>
         </div>
