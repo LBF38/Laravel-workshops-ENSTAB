@@ -21,6 +21,9 @@
                         <!--LeftSideOfNavbar-->
                         <ul class="navbar-nav mr-auto">
                             <!--FutureLeftSideLinks-->
+                            <li>
+                                <a href="/product/show">Products</a>
+                            </li>
                         </ul>
                         <!--RightSideOfNavbar-->
                         <ul class="navbar-nav ml-auto">
