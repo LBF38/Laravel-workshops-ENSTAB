@@ -21,3 +21,5 @@ Route::get('/contact', 'App\Http\Controllers\HomeController@contact')->name("hom
 Route::get('/product/show/{id}','App\Http\Controllers\ProductController@show')->name("product.show");
 Route::get('/product/create', 'App\Http\Controllers\ProductController@create')->name("product.create");
 Route::post('/product/save', 'App\Http\Controllers\ProductController@save')->name("product.save");
+Route::get('/image/index', 'App\Http\Controllers\ImageController@index')->name("image.index");
+Route::post('/image/save', 'App\Http\Controllers\ImageController@save')->name("image.save");
