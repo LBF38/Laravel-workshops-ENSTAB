@@ -5,6 +5,8 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Resources\ProductResource;
+use Validator;
 
 class ProductController extends Controller
 {
@@ -15,7 +17,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::all();
+        return response(['products' => ProductResource::collection($products)]);
     }
 
     /**
@@ -26,7 +29,21 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $validator = Validator::make($data, [
+            'name' => 'required|max:255',
+            'sku' => 'required|max:255',
+            'upc' => 'required|max:255',
+        ]);
+
+        if($validator->fails()){
+            return response(['error' => $validator->errors(), 'Validation Error']);
+        }
+
+        $product = Product::create($data);
+
+        return response(['product' => new ProductResource($product), 'message' => 'Product created successfully']);
     }
 
     /**
@@ -37,7 +54,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return response(['product' => new ProductResource($product)]);
     }
 
     /**
@@ -49,7 +66,21 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $data = $request->all();
+
+        $validator = Validator::make($data, [
+            'name' => 'required|max:255',
+            'sku' => 'required|max:255',
+            'upc' => 'required|max:255',
+        ]);
+
+        if($validator->fails()){
+            return response(['error' => $validator->errors(), 'Validation Error']);
+        }
+
+        $product->update($data);
+
+        return response(['product' => new ProductResource($product), 'message' => 'Product updated successfully']);
     }
 
     /**
@@ -60,6 +91,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        return response(['message' => 'Product deleted successfully']);
     }
 }
