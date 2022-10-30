@@ -37,7 +37,7 @@ class AuthTest extends TestCase
         ]);
 
         // Simulated landing
-        $response = $this->json('POST', route('login'), [
+        $response = $this->json('POST', route('/api/login'), [
             'email' => $email,
             'password' => $password,
         ]);
